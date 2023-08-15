@@ -1,0 +1,28 @@
+#ifndef MAIN_RIGHT_CONTROLBARWIDGET_H
+#define MAIN_RIGHT_CONTROLBARWIDGET_H
+
+#include <QWidget>
+
+QT_BEGIN_NAMESPACE
+class QHBoxLayout;
+class mainWidget;
+QT_END_NAMESPACE
+
+class main_right_controlBarWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    mainWidget* parent;
+    int width;
+    int height;
+    explicit main_right_controlBarWidget(QWidget *parent = nullptr);
+    static main_right_controlBarWidget& getInstance(QWidget* parent = nullptr);
+
+private:
+    QHBoxLayout* mainHBL;
+
+signals:
+
+};
+
+#endif // MAIN_RIGHT_CONTROLBARWIDGET_H

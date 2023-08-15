@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/logo.png</file>
+        <file>img/collapse.png</file>
+        <file>img/full.png</file>
+        <file>img/Light.png</file>
+        <file>img/Night.png</file>
+        <file>img/normal.png</file>
+        <file>img/quit.png</file>
+        <file>img/search.png</file>
+        <file>img/early.png</file>
+        <file>img/like.png</file>
+        <file>img/music.png</file>
+        <file>img/recommend.png</file>
+    </qresource>
+</RCC>
