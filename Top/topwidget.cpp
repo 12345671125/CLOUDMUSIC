@@ -75,4 +75,6 @@ void topWidget::mouseReleaseEvent(QMouseEvent *event)
 {
     this->setCursor(Qt::ArrowCursor);
     mainWin::getInstance().Dragging = false;
+    mainWin::getInstance().f_Position = QPoint(mainWin::getInstance().geometry().x(),
+                                               mainWin::getInstance().geometry().y());
 }

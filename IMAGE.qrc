@@ -12,5 +12,13 @@
         <file>img/like.png</file>
         <file>img/music.png</file>
         <file>img/recommend.png</file>
+        <file>img/front.png</file>
+        <file>img/mode_onlyone.png</file>
+        <file>img/mode_random.png</file>
+        <file>img/next.png</file>
+        <file>img/pause.png</file>
+        <file>img/start.png</file>
+        <file>img/mode_circle.png</file>
+        <file>img/handle.png</file>
     </qresource>
 </RCC>

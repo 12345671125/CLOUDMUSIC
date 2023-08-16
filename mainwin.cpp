@@ -4,6 +4,7 @@
 #include <QVBoxLayout>
 #include "Top/topwidget.h"
 #include "Center/mainwidget.h"
+#include "QApplication"
 
 mainWin::mainWin(QWidget *parent)
     : QWidget(parent),
@@ -21,6 +22,7 @@ mainWin::mainWin(QWidget *parent)
     QCoreApplication::setApplicationName("CloudMusic");
     QCoreApplication::setApplicationVersion("1.0");
 
+
     this->topWidget = &topWidget::getInstance(this);
     this->centerWidget = &mainWidget::getInstance(this);
 
@@ -33,8 +35,9 @@ mainWin::mainWin(QWidget *parent)
     this->mainVBL->addWidget(this->topWidget);
     this->mainVBL->addWidget(this->centerWidget);
 
-    this->f_Position = QPoint(this->geometry().x(),this->geometry().y());
-
+    QApplication* app;
+    this->f_Position = QPoint((app->primaryScreen()->size().width() - this->width())/2,(app->primaryScreen()->size().height() - this->height())/2);
+//    qDebug()<<this->f_Position;
     this->setStyleSheet(".myMain{border:none;border-radius:5px;margin:0px;padding:0px;}");
 
     this->setLayout(this->mainVBL);

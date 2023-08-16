@@ -6,6 +6,9 @@
 QT_BEGIN_NAMESPACE
 class QHBoxLayout;
 class mainWidget;
+class controlbar_left;
+class controlbar_center;
+class controlbar_right;
 QT_END_NAMESPACE
 
 class main_right_controlBarWidget : public QWidget
@@ -20,6 +23,9 @@ public:
 
 private:
     QHBoxLayout* mainHBL;
+    controlbar_left* leftWidget;
+    controlbar_center* centerWidget;
+    controlbar_right* rightWidget;
 
 signals:
 

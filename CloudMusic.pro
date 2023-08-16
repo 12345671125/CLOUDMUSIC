@@ -24,7 +24,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    img/music.png
+    img/front.png \
+    img/mode_ circle.png \
+    img/mode_onlyone.png \
+    img/mode_random.png \
+    img/music.png \
+    img/next.png \
+    img/pause.png \
+    img/start.png
 
 include($$PWD/Top/top.pri)
 include($$PWD/Center/center.pri)

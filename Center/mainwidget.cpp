@@ -20,7 +20,7 @@ mainWidget::mainWidget(QWidget *parent)
 {
     if(parent != nullptr){
         this->resize(this->width,this->height);
-        qDebug()<<"mainWidget init";
+        qDebug()<<"mainWidget init()";
 
         this->mainHBL->setContentsMargins(0,0,0,0);
         this->mainHBL->setSpacing(0);
@@ -28,7 +28,7 @@ mainWidget::mainWidget(QWidget *parent)
 
         this->rightHBL->setContentsMargins(0,0,0,0);
         this->rightHBL->setSpacing(0);
-        this->rightHBL->addWidget(this->stackWidget,4);
+        this->rightHBL->addWidget(this->stackWidget,6);
         this->rightHBL->addWidget(this->controlBarWidget,1);
 
         this->mainHBL->addWidget(this->listWidget,1);

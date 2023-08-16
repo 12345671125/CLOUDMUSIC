@@ -21,4 +21,15 @@ const QString my_centerWidget_style = "*{background:#ffffff;padding:0px;margin:0
                                         .QListWidget:item::selected{border-bottom:3px solid red;}  \
                                          .QListWidget:item::hover{border-bottom:2px solid red;}    \
                                           .main_right_controlBarWidget{border-top:1px solid #e6e6e6;border-bottom-right-radius:5px;}                                                                  ";
+
+const QString my_progressbar_style = "  .QTimeEdit{border:none;margin:0px;padding:0px;}\
+                                        .QTimeEdit::up-button,.QTimeEdit::down-button{border:none;width:0px}\
+                                        \
+                                        QSlider::groove:horizontal {border: 0px solid #bbb;}\
+                                       .QSlider::add-page:horizontal {background: #dbdbdb;border: 0px solid #777;border-radius: 2px;margin-top:9px;margin-bottom:9px;}\
+                                        .QSlider::sub-page:horizontal {background: #d81e06;border-radius: 2px;margin-top:9px;margin-bottom:9px;} \
+                                      .QSlider::handle:horizontal{width: 10px;border:none;background:#707070;} \
+                                       .QSlider::handle:horizontal:hover{width:10px;border:none;background:#2c2c2c;} " ;
+
+
 #endif // STYLE_H

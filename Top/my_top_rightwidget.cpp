@@ -90,8 +90,6 @@ void my_top_rightWidget::quit()
 void my_top_rightWidget::fullScreen()
 {
     if(this->hasFull == false){
-        mainWin::getInstance().f_Position = QPoint(mainWin::getInstance().geometry().x(),
-                                                  mainWin::getInstance().geometry().y());
         mainWin::getInstance().showMaximized();  //最大化主窗口
         this->fullBtn->setIcon(*this->normalSizeIcon);
         this->hasFull = true;
@@ -100,10 +98,7 @@ void my_top_rightWidget::fullScreen()
         //        myMain::getInstance().adjustSize();
         this->fullBtn->setIcon(*this->fullIcon);
         this->hasFull = false;
-
-        if(!mainWin::getInstance().f_Position.isNull())
-            mainWin::getInstance().move(mainWin::getInstance().f_Position);
-
+        mainWin::getInstance().move(mainWin::getInstance().f_Position);
     }
 
 }
