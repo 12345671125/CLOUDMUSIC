@@ -20,6 +20,12 @@ public:
     explicit controlbar_btnG(QWidget *parent = nullptr);
     ~controlbar_btnG();
     static controlbar_btnG& getInstance(QWidget* parent = nullptr);
+    void switchPlayAndPause();
+    int playState = 0;
+public slots:
+    void controlMusic();
+
+
 private:
     QPushButton* startAndpauseBtn;
     QPushButton* frontBtn;
@@ -33,6 +39,7 @@ private:
     QIcon* modeIcon_random;
     QIcon* modeIcon_onlyone;
     QHBoxLayout* mainHBL;
+
 
 signals:
 

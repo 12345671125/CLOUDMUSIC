@@ -7,6 +7,7 @@
 #include <QStyle>
 #include <QVBoxLayout>
 #include "../style.h"
+#include <QDebug>
 
 mainWidget::mainWidget(QWidget *parent)
     : QWidget{parent},
@@ -16,7 +17,7 @@ mainWidget::mainWidget(QWidget *parent)
     stackWidget(&main_right_stackWidget::getInstance(this)),
     controlBarWidget(&main_right_controlBarWidget::getInstance(this)),
     mainHBL(new QHBoxLayout(this)),
-    rightHBL(new QVBoxLayout(this))
+    rightHBL(new QVBoxLayout())
 {
     if(parent != nullptr){
         this->resize(this->width,this->height);
@@ -36,6 +37,7 @@ mainWidget::mainWidget(QWidget *parent)
         this->setLayout(this->mainHBL);
 
         this->setStyle(my_centerWidget_style);
+        qDebug()<<this->stackWidget;
     }else{
         exit(1);
     }

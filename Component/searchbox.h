@@ -29,6 +29,11 @@ private:
     QPushButton* search_btn;
     QHBoxLayout* mainHBL;
 
+    void keyPressEvent(QKeyEvent *event);
+
+private slots:
+    void showSearchPage();
+
 signals:
 
 };

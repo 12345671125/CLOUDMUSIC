@@ -4,6 +4,7 @@
 #include <QIcon>
 #include <QLabel>
 #include <QPushButton>
+#include <QDebug>
 
 my_ListWidgetItem::my_ListWidgetItem(QString title,QString imgPath,QWidget *parent)
     : QWidget{parent},

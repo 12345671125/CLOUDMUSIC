@@ -8,6 +8,7 @@ class QScreen;
 class QVBoxLayout;
 class topWidget;
 class mainWidget;
+class myHttpHandle;
 QT_END_NAMESPACE
 
 class mainWin : public QWidget
@@ -19,6 +20,7 @@ private:
     QVBoxLayout* mainVBL;
     topWidget* topWidget;
     mainWidget* centerWidget;
+    myHttpHandle* httpHandle;
 
 public:
     const int realW; //物理屏幕宽度

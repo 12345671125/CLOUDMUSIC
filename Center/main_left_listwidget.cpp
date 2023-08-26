@@ -4,6 +4,7 @@
 #include <QListWidget>
 #include "../Component/my_listwidgetitem.h"
 #include "mainwidget.h"
+#include <QDebug>
 
 main_left_listWidget::main_left_listWidget(QWidget *parent)
     : QWidget{parent},
@@ -29,7 +30,7 @@ main_left_listWidget::main_left_listWidget(QWidget *parent)
         this->addItem_To_listWidget("最近播放",":/img/early.png");
 
         this->listWidget->setFocusPolicy(Qt::NoFocus);
-        this->listWidget->setSpacing(2);
+        this->listWidget->setSpacing(10);
 
         this->mainHBL->addWidget(this->listWidget);
         this->setLayout(mainHBL);

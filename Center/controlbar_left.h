@@ -6,6 +6,7 @@
 QT_BEGIN_NAMESPACE
 class QHBoxLayout;
 class main_right_controlBarWidget;
+class songImg_songTitle;
 QT_END_NAMESPACE
 
 class controlbar_left : public QWidget
@@ -20,6 +21,7 @@ public:
 
 private:
     QHBoxLayout* mainHBL;
+    songImg_songTitle* songImgAndTitleWidget;
 
 signals:
 

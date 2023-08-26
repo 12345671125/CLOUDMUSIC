@@ -3,6 +3,8 @@
 #include <QHBoxLayout>
 #include "../Component/searchbox.h"
 #include "topwidget.h"
+#include <QDebug>
+
 my_top_centerWidget::my_top_centerWidget(QWidget *parent)
     : QWidget{parent},
     parent((topWidget*)parentWidget()),

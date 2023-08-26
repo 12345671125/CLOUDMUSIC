@@ -1,10 +1,13 @@
 #include "mainwin.h"
 #include "QGuiApplication"
+#include <QIcon>
 #include <QScreen>
 #include <QVBoxLayout>
 #include "Top/topwidget.h"
 #include "Center/mainwidget.h"
 #include "QApplication"
+#include <Network/myhttphandle.h>
+#include <QDebug>
 
 mainWin::mainWin(QWidget *parent)
     : QWidget(parent),
@@ -15,7 +18,8 @@ mainWin::mainWin(QWidget *parent)
     initW(realW * 1080 / 1920),
     initH(realH * 680 / 1080),
     c_Position(QCursor::pos()),
-    Dragging(false)
+    Dragging(false),
+    httpHandle(&myHttpHandle::getInstance())
 {
     this->resize(this->initW,this->initH);
     this->setWindowIcon(QIcon(QPixmap(":/img/logo.png")));
@@ -37,7 +41,7 @@ mainWin::mainWin(QWidget *parent)
 
     QApplication* app;
     this->f_Position = QPoint((app->primaryScreen()->size().width() - this->width())/2,(app->primaryScreen()->size().height() - this->height())/2);
-//    qDebug()<<this->f_Position;
+    qDebug()<<this->f_Position;
     this->setStyleSheet(".myMain{border:none;border-radius:5px;margin:0px;padding:0px;}");
 
     this->setLayout(this->mainVBL);

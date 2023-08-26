@@ -5,8 +5,12 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <../style.h>
+#include <QMessageBox>
 #include <QStyle>
 #include "my_top_centerwidget.h"
+#include "Center/main_right_stackwidget.h"
+#include <QDebug>
+#include <QKeyEvent>
 
 SearchBox::SearchBox(QWidget *parent)
     : QWidget{parent},
@@ -36,6 +40,8 @@ SearchBox::SearchBox(QWidget *parent)
 
         this->setStyle(my_searchBox_style);
 
+        QObject::connect(this->search_btn,SIGNAL(clicked(bool)),this,SLOT(showSearchPage()));
+
 
 
     }else{
@@ -60,4 +66,23 @@ void SearchBox::setStyle(QString style)
     this->setStyleSheet(style);
     this->style()->polish(this);
     this->update();
+}
+
+void SearchBox::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == 16777220 && !this->search_input->text().isEmpty()){
+        this->showSearchPage();
+    }
+}
+
+void SearchBox::showSearchPage()
+{
+    QString input = this->search_input->text();
+    if(input.isEmpty()){
+        QMessageBox::information(this,"搜索","搜索内容不能未空！");
+        return;
+    }else{
+        main_right_stackWidget::getInstance().toSearchPage(input);
+//        qDebug()<<&main_right_stackWidget::getInstance();
+    }
 }

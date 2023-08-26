@@ -7,12 +7,17 @@ QT_BEGIN_NAMESPACE
 class QPushButton;
 class QHBoxLayout;
 class QIcon;
+class username_headportrait;
+class topWidget;
 QT_END_NAMESPACE
 
 class my_top_rightWidget : public QWidget
 {
     Q_OBJECT
 public:
+    topWidget* parent;
+    int width;
+    int height;
     explicit my_top_rightWidget(QWidget *parent = nullptr);
     ~my_top_rightWidget();
     static my_top_rightWidget& getInstance(QWidget* parent = nullptr);
@@ -31,6 +36,7 @@ private:
     QIcon* lightIcon;
     QIcon* nightIcon;
     QHBoxLayout* mainHBL;
+    username_headportrait* username_headportrait_widget;
 
 
 private slots:

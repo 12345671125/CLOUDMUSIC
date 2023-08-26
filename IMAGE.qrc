@@ -20,5 +20,8 @@
         <file>img/start.png</file>
         <file>img/mode_circle.png</file>
         <file>img/handle.png</file>
+        <file>img/default_head_portrait.png</file>
+        <file>img/oldcard.png</file>
+        <file>img/waitVerify.png</file>
     </qresource>
 </RCC>

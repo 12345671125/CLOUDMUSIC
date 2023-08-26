@@ -5,6 +5,8 @@
 #include <QHBoxLayout>
 #include <QIcon>
 #include <QPushButton>
+#include "Component/player.h"
+#include <QDebug>
 
 controlbar_btnG::controlbar_btnG(QWidget *parent)
     : QWidget{parent},
@@ -40,15 +42,16 @@ controlbar_btnG::controlbar_btnG(QWidget *parent)
         this->startAndpauseBtn->setFocusPolicy(Qt::NoFocus);
         this->switchModeBtn->setFocusPolicy(Qt::NoFocus);
 
+
         this->frontBtn->setIcon(*this->frontIcon);
         this->nextBtn->setIcon(*this->nextIcon);
         this->startAndpauseBtn->setIcon(*this->startIcon);
         this->switchModeBtn->setIcon(*this->modeIcon_circle);
 
-        this->frontBtn->setIconSize(QSize(24,24));
-        this->nextBtn->setIconSize(QSize(24,24));
-        this->startAndpauseBtn->setIconSize(QSize(32,32));
-        this->switchModeBtn->setIconSize(QSize(24,24));
+        this->frontBtn->setIconSize(QSize(32,32));
+        this->nextBtn->setIconSize(QSize(32,32));
+        this->startAndpauseBtn->setIconSize(QSize(48,48));
+        this->switchModeBtn->setIconSize(QSize(32,32));
 
 
         this->mainHBL->addWidget(this->switchModeBtn);
@@ -57,6 +60,8 @@ controlbar_btnG::controlbar_btnG(QWidget *parent)
         this->mainHBL->addWidget(this->nextBtn);
 
         this->setLayout(this->mainHBL);
+
+        connect(this->startAndpauseBtn,SIGNAL(clicked(bool)),this,SLOT(controlMusic()));
 
         qDebug()<<"controlbar_btn init()";
     }else{
@@ -69,13 +74,7 @@ controlbar_btnG::controlbar_btnG(QWidget *parent)
 
 controlbar_btnG::~controlbar_btnG()
 {
-    delete startIcon;
-    delete pauseIcon;
-    delete frontIcon;
-    delete nextIcon;
-    delete modeIcon_circle;
-    delete modeIcon_random;
-    delete modeIcon_onlyone;
+
 }
 
 controlbar_btnG &controlbar_btnG::getInstance(QWidget *parent)
@@ -83,3 +82,27 @@ controlbar_btnG &controlbar_btnG::getInstance(QWidget *parent)
     static controlbar_btnG instance(parent);
     return instance;
 }
+
+void controlbar_btnG::switchPlayAndPause()
+{
+    if(this->playState == 1){
+        this->startAndpauseBtn->setIcon(*this->pauseIcon);
+    }else{
+        this->startAndpauseBtn->setIcon(*this->startIcon);
+    }
+
+}
+void controlbar_btnG::controlMusic()
+{
+    if(Player::getInstance().getStatus() == QMediaPlayer::PlayingState){
+        this->playState = 0;
+        Player::getInstance().pause();
+        this->switchPlayAndPause();
+    }else if(Player::getInstance().getStatus() == QMediaPlayer::PausedState){
+        this->playState = 1;
+        Player::getInstance().start();
+        this->switchPlayAndPause();
+    }
+
+}
+

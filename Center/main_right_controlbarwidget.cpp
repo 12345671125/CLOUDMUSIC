@@ -4,6 +4,7 @@
 #include "controlbar_center.h"
 #include "controlbar_right.h"
 #include <QHBoxLayout>
+#include <QDebug>
 
 main_right_controlBarWidget::main_right_controlBarWidget(QWidget *parent)
     : QWidget{parent},

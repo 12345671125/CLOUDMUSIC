@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,19 +24,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    img/front.png \
-    img/mode_ circle.png \
-    img/mode_onlyone.png \
-    img/mode_random.png \
-    img/music.png \
-    img/next.png \
-    img/pause.png \
-    img/start.png
+    img/mode_ circle.png
 
 include($$PWD/Top/top.pri)
 include($$PWD/Center/center.pri)
 include($$PWD/Bottom/bottom.pri)
 include($$PWD/Component/Component.pri)
+include($$PWD/Network/Network.pri)
+include($$PWD/Function/Function.pri)
 
 RESOURCES += \
     IMAGE.qrc

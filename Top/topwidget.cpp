@@ -7,6 +7,7 @@
 #include "mainwin.h"
 #include <QMouseEvent>
 #include "style.h"
+#include <QDebug>
 
 topWidget::topWidget(QWidget *parent)
     : QWidget{parent},

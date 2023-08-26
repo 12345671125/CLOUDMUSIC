@@ -4,6 +4,7 @@
 #include "../Component/controlbar_btng.h"
 #include "../Component/controlbar_progressbar.h"
 #include "Center/main_right_controlbarwidget.h"
+#include <QDebug>
 
 controlbar_center::controlbar_center(QWidget *parent)
     : QWidget{parent},

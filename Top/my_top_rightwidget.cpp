@@ -5,9 +5,16 @@
 #include <QIcon>
 #include <QPushButton>
 #include "mainwin.h"
+#include "../Component/username_headportrait.h"
+#include <QDebug>
+
+#include "topwidget.h"
 
 my_top_rightWidget::my_top_rightWidget(QWidget *parent)
     : QWidget{parent},
+    parent((topWidget*)parentWidget()),
+    width(this->parent->width * 0.2),
+    height(this->parent->height * 0.95),
     quitBtn(new QPushButton(this)),
     fullBtn(new QPushButton(this)),
     minmunBtn(new QPushButton(this)),
@@ -18,7 +25,8 @@ my_top_rightWidget::my_top_rightWidget(QWidget *parent)
     normalSizeIcon(new QIcon(QPixmap(":/img/normal.png"))),
     lightIcon(new QIcon(QPixmap(":/img/Light.png"))),
     nightIcon(new QIcon(QPixmap(":/img/Night.png"))),
-    mainHBL(new QHBoxLayout(this))
+    mainHBL(new QHBoxLayout(this)),
+    username_headportrait_widget(&username_headportrait::getInstance(this))
 {
     if(parent != nullptr){
         this->setAttribute(Qt::WA_StyledBackground,true); //使控件使用自定义样式
@@ -36,7 +44,7 @@ my_top_rightWidget::my_top_rightWidget(QWidget *parent)
         this->switchStyleBtn->setFocusPolicy(Qt::NoFocus);
 
         this->mainHBL->setAlignment(Qt::AlignRight);
-        this->mainHBL->setSpacing(8);
+        this->mainHBL->setSpacing(15);
         this->mainHBL->setContentsMargins(0,0,0,0);
         this->quitBtn->setFlat(true);
         this->fullBtn->setFlat(true);
@@ -49,6 +57,7 @@ my_top_rightWidget::my_top_rightWidget(QWidget *parent)
 
         this->resize(128,32);
 
+        this->mainHBL->addWidget(this->username_headportrait_widget);
         this->mainHBL->addWidget(switchStyleBtn);
         this->mainHBL->addWidget(minmunBtn);
         this->mainHBL->addWidget(fullBtn);
@@ -68,12 +77,7 @@ my_top_rightWidget::my_top_rightWidget(QWidget *parent)
 
 my_top_rightWidget::~my_top_rightWidget()
 {
-    delete this->fullIcon;
-    delete this->lightIcon;
-    delete this->minmunIcon;
-    delete this->nightIcon;
-    delete this->normalSizeIcon;
-    delete this->quitIcon;
+
 }
 
 my_top_rightWidget &my_top_rightWidget::getInstance(QWidget *parent)
@@ -90,15 +94,19 @@ void my_top_rightWidget::quit()
 void my_top_rightWidget::fullScreen()
 {
     if(this->hasFull == false){
-        mainWin::getInstance().showMaximized();  //最大化主窗口
-        this->fullBtn->setIcon(*this->normalSizeIcon);
+//        qDebug()<<"full";
         this->hasFull = true;
+        mainWin::getInstance().showFullScreen();  //最大化主窗口
+        this->fullBtn->setIcon(*this->normalSizeIcon);
+        mainWin::getInstance().repaint();
     }else{
-        mainWin::getInstance().resize(mainWin::getInstance().initW,mainWin::getInstance().initH);
+//        qDebug()<< "min";
+        this->hasFull = false;
+        mainWin::getInstance().showNormal();
         //        myMain::getInstance().adjustSize();
         this->fullBtn->setIcon(*this->fullIcon);
-        this->hasFull = false;
         mainWin::getInstance().move(mainWin::getInstance().f_Position);
+        mainWin::getInstance().repaint();
     }
 
 }

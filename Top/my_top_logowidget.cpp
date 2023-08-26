@@ -8,6 +8,7 @@
 #include <QStyle>
 #include<QCoreApplication>
 #include "topwidget.h"
+#include <QDebug>
 
 my_top_logoWidget::my_top_logoWidget(QWidget *parent)
     : QWidget{parent},
