@@ -19,14 +19,14 @@ Player::Player(QObject* parent) :
     QObject::connect(this->player,SIGNAL(positionChanged(qint64)),&controlbar_progressbar::getInstance(),SLOT(positionCharged(qint64)));
     QObject::connect(this->player,SIGNAL(durationChanged(qint64)),&controlbar_progressbar::getInstance(),SLOT(setDuration(qint64)));
     QObject::connect(this->player,&QMediaPlayer::stateChanged,[=](){
-    QObject::connect(this->player,SIGNAL(positionChanged(qint64)),&lyricWidget::getInstance(),SLOT(addHightLight(qint64)));
-        QObject::connect(this->player,SIGNAL(positionChanged(qint64)),&lyricWidget::getInstance(),SLOT(changeScrollBar(qint64)));
         if(player->state() == QMediaPlayer::StoppedState){
             controlbar_btnG::getInstance().playState = 0;
             controlbar_btnG::getInstance().switchPlayAndPause();
         }
     });
     QObject::connect(this->checkTimer,SIGNAL(timeout()),this,SLOT(check()));
+    QObject::connect(this->player,SIGNAL(positionChanged(qint64)),&lyricWidget::getInstance(),SLOT(addHightLight(qint64)));
+    QObject::connect(this->player,SIGNAL(stateChanged(QMediaPlayer::State)),&lyricWidget::getInstance(),SLOT(changeTimerStatus(QMediaPlayer::State)));
     this->checkTimer->setInterval(100);
 
 }
@@ -93,7 +93,9 @@ void Player::sliderReleased()
    if(this->player->state() == QMediaPlayer::PlayingState || this->player->state() == QMediaPlayer::PausedState){
        if(this->player->duration() != 0){
            this->controlMetux->lock();
-           this->player->setPosition((double)controlbar_progressbar::getInstance().getSliderPostion() / 100 * this->player->duration());
+           qint64 position =  qint64((double)controlbar_progressbar::getInstance().getSliderPostion() / 100 * this->player->duration());
+           this->player->setPosition(position);
+           lyricWidget::getInstance().chargeHightLight(position);
            this->controlMetux->unlock();
        }
    }else{

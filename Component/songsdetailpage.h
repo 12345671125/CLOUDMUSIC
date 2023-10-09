@@ -19,6 +19,9 @@ public:
     explicit songsDetailPage(QWidget *parent = nullptr);
     static songsDetailPage& getInstance();
     void setSongLyric(QString songLyric);
+    void setSongtitle(QString songTitle,QString singer,QString album);
+    void setAlbumPic(QByteArray byteArr);
+    void setStyle(QString style);
 private:
     QLabel* title;
     QLabel* singer;

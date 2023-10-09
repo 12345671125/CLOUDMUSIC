@@ -19,9 +19,9 @@ public:
     explicit main_left_listWidget(QWidget *parent = nullptr);
     static main_left_listWidget& getInstance(QWidget* parent = nullptr);
     void addItem_To_listWidget(QString title,QString imgPath);
+    QListWidget* listWidget;
 
 private:
-    QListWidget* listWidget;
     QHBoxLayout* mainHBL;
 
 signals:

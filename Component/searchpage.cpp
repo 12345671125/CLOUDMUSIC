@@ -17,6 +17,7 @@
 #include "songimg_songtitle.h"
 #include "albuminfo.h"
 #include <QDebug>
+#include "songsdetailpage.h"
 
 SearchPage::SearchPage(QWidget *parent)
     : QWidget{parent},
@@ -165,7 +166,9 @@ void SearchPage::itemDoubleClicked(QTableWidgetItem *item)
         controlbar_btnG::getInstance().switchPlayAndPause();
         QString title = this->tableWidget->item(this->tableWidget->currentRow(),0)->text();
         QString singer = this->tableWidget->item(this->tableWidget->currentRow(),1)->text();
+        QString album = this->tableWidget->item(this->tableWidget->currentColumn(),2)->text();
         songImg_songTitle::getInstance().setImgAndTitle(albumInfo::getInstance().getAlbumInfo(idAlbumStr),title,singer);
+        songsDetailPage::getInstance().setSongtitle(title,singer,album);
     };
 
 }

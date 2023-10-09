@@ -1,11 +1,14 @@
+#include "main_left_listwidget.h"
 #include "main_right_stackwidget.h"
 #include "mainwidget.h"
 #include "../Component/searchpage.h"
 #include "../Component/songsdetailpage.h"
+#include "../Component/cloudmusic_mainpage.h"
 
 #include <QStackedWidget>
 #include <QVBoxLayout>
 #include <QDebug>
+#include <QListWidgetItem>
 
 
 main_right_stackWidget::main_right_stackWidget(QWidget *parent)
@@ -16,7 +19,8 @@ main_right_stackWidget::main_right_stackWidget(QWidget *parent)
     mainVBL(new QVBoxLayout(this)),
     stackedWidget(new QStackedWidget(this)),
     searchPage(&SearchPage::getInstance()),
-    songsDetailPage(&songsDetailPage::getInstance())
+    songsDetailPage(&songsDetailPage::getInstance()),
+    mainPage(&cloudmusic_mainpage::getInstace())
 {
     if(parent != nullptr){
         this->resize(width,height);
@@ -26,12 +30,15 @@ main_right_stackWidget::main_right_stackWidget(QWidget *parent)
 
         this->stackedWidget->setAttribute(Qt::WA_StyledBackground);
         this->stackedWidget->setContentsMargins(0,0,0,0);
+        this->stackedWidget->addWidget(this->mainPage);
         this->stackedWidget->addWidget(this->searchPage);
         this->stackedWidget->addWidget(this->songsDetailPage);
-        this->stackedWidget->setCurrentWidget(nullptr);
+        this->stackedWidget->setCurrentWidget(this->mainPage);
 
         this->mainVBL->addWidget(this->stackedWidget);
         this->setLayout(this->mainVBL);
+
+        QObject::connect(main_left_listWidget::getInstance().listWidget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(switchByClickList(QListWidgetItem*)));
         qDebug()<<"mystackWidget init()";
     }else{
         exit(1);
@@ -61,4 +68,11 @@ void main_right_stackWidget::toSongsDetailPage()
     }
 
 
+}
+
+void main_right_stackWidget::switchByClickList(QListWidgetItem *item)
+{
+    if(item->whatsThis() == "推荐"){
+        this->stackedWidget->setCurrentWidget(this->mainPage);
+    }
 }

@@ -9,6 +9,8 @@ QT_BEGIN_NAMESPACE
     class SearchPage;
     class QVBoxLayout;
     class songsDetailPage;
+    class cloudmusic_mainpage;
+    class QListWidgetItem;
 QT_END_NAMESPACE
 
 class main_right_stackWidget : public QWidget
@@ -27,11 +29,15 @@ private:
     QStackedWidget* stackedWidget;
     SearchPage* searchPage;
     songsDetailPage* songsDetailPage;
+    cloudmusic_mainpage* mainPage;
     QWidget* frontWidget = nullptr;
 
 
 
 signals:
+
+public slots:
+    void switchByClickList(QListWidgetItem *item);
 
 };
 

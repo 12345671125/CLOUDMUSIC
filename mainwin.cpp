@@ -22,9 +22,9 @@ mainWin::mainWin(QWidget *parent)
     httpHandle(&myHttpHandle::getInstance())
 {
     this->resize(this->initW,this->initH);
-    this->setWindowIcon(QIcon(QPixmap(":/img/logo.png")));
-    QCoreApplication::setApplicationName("CloudMusic");
-    QCoreApplication::setApplicationVersion("1.0");
+    this->setWindowIcon(QIcon(QPixmap(":/img/logo.png")));  //设置应用图标
+    QCoreApplication::setApplicationName("CloudMusic");    //设置应用名称
+    QCoreApplication::setApplicationVersion("1.0"); //设置应用版本
 
 
     this->topWidget = &topWidget::getInstance(this);

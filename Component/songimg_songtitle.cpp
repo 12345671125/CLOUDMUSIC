@@ -14,6 +14,7 @@
 #include <QNetworkReply>
 #include "../style.h"
 #include "../Center/main_right_stackwidget.h"
+#include "./songsdetailpage.h"
 
 songImg_songTitle::songImg_songTitle(QWidget *parent)
     : QWidget{parent},
@@ -92,6 +93,8 @@ void songImg_songTitle::setImgAndTitle(QJsonArray json_arr,QString songName,QStr
                 pixmap.loadFromData(jpegData);
                 pixmap.scaled(this->imgBox->size());
                 this->imgBox->setPixmap(pixmap); // 你在QLabel显示图片
+
+                songsDetailPage::getInstance().setAlbumPic(jpegData);
             }
         }
     }else{

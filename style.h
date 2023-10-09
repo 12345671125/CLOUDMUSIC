@@ -42,6 +42,18 @@ const QString my_searchPage_style = " *{font-size:24px;font-family:Microsoft YaH
 const QString my_songImg_songTitle_style = "";
 
 
-const QString my_lyric_style_def = ".QLabel{font-size:34px;font-family:Microsoft YaHei;}";
-const QString my_lyric_style_highLight = ".QLabel{font-size:40px;font-family:Microsoft YaHei;color:#d81e06;font-weight:bold;}";
+const QString my_lyric_style_def = ".QLabel{font-size:34px;font-family:Microsoft YaHei;border:none;}";
+const QString my_lyric_style_highLight = ".QLabel{font-size:40px;font-family:Microsoft YaHei;color:#d81e06;font-weight:bold;border:none;}";
+
+
+const QString my_songDetail_style = "*{border:none;margin:0px;padding:0px;}\
+                                    #title{font-size:48px;font-weight:bold;} \
+                                     #singer{font-size:28px;} \
+                                     #album{font-size:28px;} \
+                                                  ";
+
+
+const QString my_mainpage_style = "";
+
+const QString my_mainpage_personalized_style = "";
 #endif // STYLE_H

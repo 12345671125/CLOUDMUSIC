@@ -23,5 +23,6 @@
         <file>img/default_head_portrait.png</file>
         <file>img/oldcard.png</file>
         <file>img/waitVerify.png</file>
+        <file>img/testImg.png</file>
     </qresource>
 </RCC>

@@ -49,6 +49,7 @@ void main_left_listWidget::addItem_To_listWidget(QString title, QString imgPath)
 {
     my_ListWidgetItem* ListItemWidget = new my_ListWidgetItem(title,imgPath,this);
     QListWidgetItem* ListItem = new QListWidgetItem(this->listWidget);
+    ListItem->setWhatsThis(title);
     this->listWidget->addItem(ListItem);
     this->listWidget->setItemWidget(ListItem,ListItemWidget);
 }

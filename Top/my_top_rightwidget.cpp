@@ -96,7 +96,7 @@ void my_top_rightWidget::fullScreen()
     if(this->hasFull == false){
 //        qDebug()<<"full";
         this->hasFull = true;
-        mainWin::getInstance().showFullScreen();  //最大化主窗口
+        mainWin::getInstance().showMaximized();  //最大化主窗口
         this->fullBtn->setIcon(*this->normalSizeIcon);
         mainWin::getInstance().repaint();
     }else{

@@ -18,7 +18,7 @@ song &song::getInstance()
     return instance;
 }
 
-bool song::isVaild(QString id)
+bool song::isVaild(QString id)  //查看歌曲是否合法
 {
     QJsonObject JSON;
     JSON.insert("id",id);
@@ -43,7 +43,7 @@ bool song::isVaild(QString id)
     }
 }
 
-QString song::getSong(QString id)
+QString song::getSong(QString id)  //获取歌曲url
 {
     QJsonObject JSON;
     QString url;
