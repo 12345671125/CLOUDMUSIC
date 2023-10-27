@@ -27,7 +27,7 @@ QJsonArray albumInfo::getAlbumInfo(QString id)
         QNetworkReply* reply =  myHttpHandle::getInstance().sendHttpRequest("/album","get",JSON,false);
         QEventLoop eventloop;
         QObject::connect(reply,SIGNAL(finished()),&eventloop,SLOT(quit()));
-        eventloop.exec(QEventLoop::ExcludeUserInputEvents);
+        eventloop.exec(QEventLoop::ExcludeUserInputEvents);//程序阻塞，进入事件循环，等待请求结束
         QObject::disconnect(reply,SIGNAL(finished()),&eventloop,SLOT(quit()));
         if(reply->error() == QNetworkReply::NoError){
             QByteArray byteArray = reply->readAll();

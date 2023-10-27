@@ -17,6 +17,7 @@ public:
     myHttpHandle(QObject* parent = nullptr);
     static myHttpHandle& getInstance();
     QNetworkReply* sendHttpRequest(QString appendUrl,QString requestMethod,QJsonObject Json_object,bool needTimeStamp = false);
+    QNetworkReply* sendHttpRequest(QString httpurl,QString requestMethod);
     QString getCookie();
     void setCookie(QString cookie);
 

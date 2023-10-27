@@ -7,7 +7,6 @@ QT_BEGIN_NAMESPACE
 class QVBoxLayout;
 class viewpager;
 class personalized;
-
 QT_END_NAMESPACE
 
 class cloudmusic_mainpage : public QWidget

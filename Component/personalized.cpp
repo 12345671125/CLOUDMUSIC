@@ -20,14 +20,15 @@ personalized::personalized(QWidget *parent)
     this->title->setAlignment(Qt::AlignLeft);
     this->title->setText("推荐歌单 >");
 
-    this->mainVBL->addWidget(this->title,1);
-    this->mainVBL->addWidget(this->componentGroup,9);
+    this->mainVBL->addWidget(this->title,2);
+    this->mainVBL->addWidget(this->componentGroup,8);
+    this->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     this->setLayout(this->mainVBL);
     this->setStyle(my_mainpage_personalized_style);
 }
 
-personalized &personalized::getInstance(QWidget *parent)
+personalized& personalized::getInstance(QWidget *parent)
 {
     static personalized instance(parent);
     return instance;

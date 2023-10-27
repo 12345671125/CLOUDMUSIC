@@ -93,5 +93,5 @@ void songsDetailPage::setAlbumPic(QByteArray byteArr)
     QPixmap pixmap;
     pixmap.loadFromData(byteArr);
     pixmap.scaled(this->imgBox->size());
-    this->imgBox->setPixmap(pixmap); // 你在QLabel显示图片
+    this->imgBox->setPixmap(pixmap); // 在QLabel显示图片
 }

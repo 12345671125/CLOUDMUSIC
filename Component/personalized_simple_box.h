@@ -7,6 +7,8 @@ QT_BEGIN_NAMESPACE
 class QLabel;
 class QImage;
 class QVBoxLayout;
+class QThread;
+class networkSource;
 QT_END_NAMESPACE
 
 class personalized_simple_box : public QWidget
@@ -14,15 +16,22 @@ class personalized_simple_box : public QWidget
     Q_OBJECT
 public:
     explicit personalized_simple_box(QWidget *parent = nullptr);
-    void init(QByteArray byteArr,QString title = "test");
-
+    void init(QJsonObject json_obj);
 private:
     QLabel* imgBox;
     QImage* img;
     QLabel* title;
     QVBoxLayout* mainVBL;
+    QThread* workThread;
+    networkSource* networkSrc;
 
 signals:
+    void getNetworkSrc(QString url);
+    void imgLoaded();
+
+private slots:
+    void getImg(QByteArray byteArr);
+
 
 };
 

@@ -86,6 +86,34 @@ QNetworkReply* myHttpHandle::sendHttpRequest(QString appendUrl, QString requestM
 
 }
 
+QNetworkReply *myHttpHandle::sendHttpRequest(QString httpurl, QString requestMethod)
+{
+    QUrl url = QUrl(httpurl);
+    QNetworkReply* reply = nullptr;
+    QNetworkRequest  request;
+    if(!url.isValid()){
+        qDebug()<<"请求的url不合法!";
+        return reply;
+    }
+    if(requestMethod.compare("get") == 0)
+    {
+        request.setUrl(url);
+        reply =  this->networkManager->get(request);
+        return reply;
+    }
+    else if(requestMethod.compare("post") == 0)
+    {
+            request.setUrl(url);
+            request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+            QByteArray byteArray;
+            byteArray.clear();
+            reply =  this->networkManager->post(request,byteArray);
+            return reply;
+    }
+
+    return reply;
+}
+
 QString myHttpHandle::getCookie()
 {
     return this->Cookie;

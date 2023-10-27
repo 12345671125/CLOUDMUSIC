@@ -4,14 +4,15 @@
 #include <QStyle>
 #include "../style.h"
 #include "viewpager.h"
-#include "personalized.h"
+#include "../Component/personalized.h"
 
 cloudmusic_mainpage::cloudmusic_mainpage(QWidget *parent)
     : QWidget{parent},
     viewpagerWidget(&viewpager::getInstance(this)),
-    personalizedWidget(&personalized::getInstance(this)),
     mainVBL(new QVBoxLayout(this))
 {
+    this->personalizedWidget = &personalized::getInstance(this);
+
     this->setAttribute(Qt::WA_StyledBackground,true);
     this->mainVBL->setSpacing(0);
     this->mainVBL->setContentsMargins(0,0,0,0);
