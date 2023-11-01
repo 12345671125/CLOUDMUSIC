@@ -21,6 +21,14 @@ cloudmusic_mainpage::cloudmusic_mainpage(QWidget *parent)
     this->mainVBL->addWidget(this->viewpagerWidget,1);
     this->mainVBL->addWidget(this->personalizedWidget,2);
 
+    this->viewpagerWidget->addImage(":img/viewpaperTest/1.jpg");
+    this->viewpagerWidget->addImage(":img/viewpaperTest/2.jpg");
+    this->viewpagerWidget->addImage(":img/viewpaperTest/3.jpg");
+    this->viewpagerWidget->addImage(":img/viewpaperTest/4.jpg");
+    this->viewpagerWidget->addImage(":img/viewpaperTest/5.jpg");
+
+    this->viewpagerWidget->startPlay();
+
     this->setLayout(this->mainVBL);
     this->setStyle(my_mainpage_style);
 }

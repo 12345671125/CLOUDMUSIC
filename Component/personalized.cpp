@@ -17,11 +17,12 @@ personalized::personalized(QWidget *parent)
     this->mainVBL->setContentsMargins(0,0,0,0);
     this->mainVBL->setSpacing(0);
 
-    this->title->setAlignment(Qt::AlignLeft);
+    this->title->setAlignment(Qt::AlignVCenter);
     this->title->setText("推荐歌单 >");
 
-    this->mainVBL->addWidget(this->title,2);
-    this->mainVBL->addWidget(this->componentGroup,8);
+
+    this->mainVBL->addWidget(this->title,1);
+    this->mainVBL->addWidget(this->componentGroup,9);
     this->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
     this->setLayout(this->mainVBL);

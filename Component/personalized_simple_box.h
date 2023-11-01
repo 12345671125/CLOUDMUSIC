@@ -17,6 +17,7 @@ class personalized_simple_box : public QWidget
 public:
     explicit personalized_simple_box(QWidget *parent = nullptr);
     void init(QJsonObject json_obj);
+    void setStyle(QString style);
 private:
     QLabel* imgBox;
     QImage* img;

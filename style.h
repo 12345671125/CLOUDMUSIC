@@ -56,4 +56,12 @@ const QString my_songDetail_style = "*{border:none;margin:0px;padding:0px;}\
 const QString my_mainpage_style = "";
 
 const QString my_mainpage_personalized_style = "";
+
+const QString my_viewpager_style = "*{border:none;margin:0px;padding:0px;border-radius:15px;} \
+                                     QPushButton{ background-color:rgb(240,255,255); background-color:rgb(240,255,255);border-radius:15px;background-color:rgb(229,241,251);border-style:outset;}               \
+                                   ";
+
+const QString my_personalized_box = "*{boreder:none;margin:0px;padding:0px;} \
+                                     QLabel{border:1px solid black;border-radius:10px;font-size:12px;}   \
+                                        ";
 #endif // STYLE_H
